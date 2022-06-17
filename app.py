@@ -22,6 +22,7 @@ def hello():
        <body>
           <form action = "http://103.56.148.64:5000/uploader" method = "POST" 
              enctype = "multipart/form-data">
+             Test git
              <input type = "file" name = "file" />
              <input type = "submit"/>
           </form>   
