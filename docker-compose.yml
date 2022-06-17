@@ -1,0 +1,39 @@
+# For more information: https://laravel.com/docs/sail
+version: '3'
+services:
+    web:
+        #dockerfile: Dockerfile
+        build: .
+        ports:
+            - "5000:5000"
+        volumes:
+            - .:/code
+            - ./upload:/app/upload
+        depends_on:
+            - redis
+            #- postgres
+            #- adminer
+
+    redis:
+        image: redis
+   # postgres:
+    #     image: postgres
+    #     environment:
+    #         POSTGRES_PASSWORD: user
+    #         POSTGRES_USER : admin
+    #         POSTGRES_DB : db_flask
+    #     expose:
+    #     - 5432
+    #     restart: always
+    #     volumes:
+    #     - ./sample_data:/sample_data
+    
+    # adminer:
+    #     image: adminer
+    #     restart: always
+    #     ports:
+    #     - 8080:8080
+    #     depends_on:
+    #     - postgres
+
+
