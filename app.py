@@ -47,7 +47,7 @@ def uploader_file():
       link = "http://103.56.148.64:5000/parse/".file_name
       html="""<html>
          <body>
-            <a href="{}" target="blank"> Parse PDF</a> 
+            <a href="?file={}" target="blank"> Parse PDF</a> 
             <br>
          </body>
       </html>""".format(
@@ -58,8 +58,9 @@ def uploader_file():
 
 @app.route('/parse')
 def read_pdf():
-   if request.method == 'POST':
-      link = os.path.join(app.config['UPLOAD_FOLDER'],file_name)
+   if request.method == 'GET':
+      link = request.args.get('file')
+      # link = os.path.join(app.config['UPLOAD_FOLDER'],file_name)
       html="""<html>
          <body>
             <h3>"{}"</h3>
