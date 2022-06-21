@@ -1,5 +1,6 @@
 # compose_flask/app.py
 from flask import Flask, render_template, request
+# from PyPDF2
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 import redis
@@ -42,7 +43,31 @@ def uploader_file():
       f.save(os.path.join(app.config['UPLOAD_FOLDER'],file_name))
       #f.save(secure_filename(f.filename))
       #return 'file uploaded successfully'
-      return os.path.join(app.config['UPLOAD_FOLDER'],file_name)
+      # link = os.path.join(app.config['UPLOAD_FOLDER'],file_name)
+      link = "http://103.56.148.64:5000/parse/".file_name
+      html="""<html>
+         <body>
+            <a href="{}" target="blank"> Parse PDF</a> 
+            <br>
+         </body>
+      </html>""".format(
+        link
+      )
+      return html
+      # return os.path.join(app.config['UPLOAD_FOLDER'],file_name)
+
+@app.route('/parse')
+def read_pdf():
+   if request.method == 'POST':
+      link = os.path.join(app.config['UPLOAD_FOLDER'],file_name)
+      html="""<html>
+         <body>
+            <h3>"{}"</h3>
+         </body>
+      </html>""".format(
+        link
+      )
+      return html
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
