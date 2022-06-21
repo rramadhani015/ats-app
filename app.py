@@ -44,7 +44,7 @@ def uploader_file():
       #f.save(secure_filename(f.filename))
       #return 'file uploaded successfully'
       # link = os.path.join(app.config['UPLOAD_FOLDER'],file_name)
-      link = "http://103.56.148.64:5000/parse/".file_name
+      link = "http://103.56.148.64:5000/parse/".secure_filename(f.filename)
       html="""<html>
          <body>
             <a href="?file={}" target="blank"> Parse PDF</a> 
