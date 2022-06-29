@@ -3,3 +3,6 @@ redis
 postgres
 werkzeug
 PyPDF2
+pdfminer
+nltk
+numpy
